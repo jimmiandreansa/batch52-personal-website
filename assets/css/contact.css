@@ -1,0 +1,66 @@
+main {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+}
+
+.input-box label {
+  font-weight: 500;
+}
+
+.input-box input,
+.input-box select {
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.input-box textarea {
+  border: none;
+  height: 200px;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 16px;
+  resize: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+button {
+  align-self: flex-end;
+  width: 120px;
+  margin-top: 24px;
+  padding: 4px 0;
+  font-size: 16px;
+  border: none;
+  color: #ffffff;
+  background-color: #161a30;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+button:hover {
+  background-color: #000000;
+}

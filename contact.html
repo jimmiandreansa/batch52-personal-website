@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Import CSS File -->
+    <link rel="stylesheet" href="./assets/css/general.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/contact.css" />
+    <title>Personal Website || Jimmi Andreansa</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <a href="/">
+          <img
+            class="navbar-logo"
+            src="./assets/images/dumbways-logo.png"
+            alt="DumbWays Logo"
+          />
+        </a>
+        <ul class="navbar-links">
+          <li><a class="active" href="/index.html">Home</a></li>
+          <li><a href="#">My Project</a></li>
+        </ul>
+      </div>
+      <a class="navbar-btn" href="/contact.html">Contact Me</a>
+    </nav>
+    <main>
+      <h1 class="title">Get In Touch</h1>
+      <form action="#">
+        <div class="input-box">
+          <label for="name">Name</label>
+          <input type="text" id="name" autocomplete="off" required/>
+        </div>
+        <div class="input-box">
+          <label for="email">Email</label>
+          <input type="email" id="email" autocomplete="off" required/>
+        </div>
+        <div class="input-box">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" autocomplete="off" required/>
+        </div>
+        <div class="input-box">
+          <label for="subject">Subject</label>
+          <select name="subject" id="subject">
+            <option value="fullstack">Fullstack Developer</option>
+            <option value="frontend">Frontend Developer</option>
+            <option value="backend">Backend Developer</option>
+          </select>
+        </div>
+        <div class="input-box">
+          <label for="message">Your Message</label>
+          <textarea name="message" id="" cols="30" rows="10"  required></textarea>
+        </div>
+        <button>submit</button>
+      </form>
+    </main>
+
+    <!-- Ionic Icons -->
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

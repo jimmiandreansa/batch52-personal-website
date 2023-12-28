@@ -3,141 +3,32 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Google Fonts Poppins -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
-      rel="stylesheet"
-    />
-    <title>Task 1 - Card</title>
-    <!-- Styling -->
-    <style>
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: "Poppins", sans-serif;
-      }
-
-      body {
-        background-color: rgb(240, 240, 240);
-        padding: 20px 0;
-      }
-
-      main {
-        width: 900px;
-        margin: auto;
-        padding: 60px 240px;
-        background-color: #ffffff;
-        border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
-      }
-
-      .top {
-        margin-bottom: 24px;
-      }
-
-      .top h2 {
-        font-size: 20px;
-        margin-bottom: 12px;
-        color: #161a30;
-      }
-
-      .top p {
-        font-size: 12px;
-        text-align: justify;
-        margin-bottom: 20px;
-      }
-
-      .top button {
-        display: block;
-        padding: 4px 16px;
-        font-size: 14px;
-        border: none;
-        color: #ffffff;
-        background-color: #161a30;
-        border-radius: 24px;
-        cursor: pointer;
-        margin-bottom: 12px;
-        transition: all 0.2s;
-      }
-
-      .top button:hover {
-        background-color: #000000;
-      }
-
-      .top a {
-        font-size: 12px;
-        text-decoration: none;
-        color: #000000;
-        display: flex;
-        align-items: center;
-      }
-
-      .top a:hover {
-        text-decoration: underline;
-      }
-
-      .top .download-icon {
-        font-size: 20px;
-        margin-left: 8px;
-      }
-
-      .middle {
-        display: flex;
-        justify-content: center;
-        gap: 12px;
-        margin-bottom: 16px;
-      }
-
-      .middle a {
-        color: #161a30;
-        font-size: 28px;
-        transition: all 0.2s;
-      }
-
-      .middle a:hover {
-        color: #000000;
-        transform: scale(1.1);
-      }
-
-      .bottom {
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-        width: 320px;
-        border-radius: 8px;
-        overflow: hidden;
-        margin: 0 auto;
-      }
-
-      .bottom img {
-        width: 100%;
-        height: 360px;
-        object-fit: cover;
-      }
-
-      .bottom .profile {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        padding: 4px 0 10px;
-      }
-
-      .bottom h2 {
-        font-size: 20px;
-        color: #161a30;
-      }
-
-      .bottom p {
-        font-size: 14px;
-      }
-    </style>
+    <!-- Import CSS File -->
+    <link rel="stylesheet" href="./assets/css/general.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/index.css" />
+    <title>Personal Website || Jimmi Andreansa</title>
   </head>
-  
+
   <body>
+    <nav>
+      <div class="navbar">
+        <a href="/">
+          <img
+            class="navbar-logo"
+            src="./assets/images/dumbways-logo.png"
+            alt="DumbWays Logo"
+          />
+        </a>
+        <ul class="navbar-links">
+          <li><a class="active" href="/index.html">Home</a></li>
+          <li><a href="#">My Project</a></li>
+        </ul>
+      </div>
+      <a class="navbar-btn" href="/contact.html">Contact Me</a>
+    </nav>
     <main>
-      <div class="top">
+      <div class="left">
         <h2>Hi, Welcome to my hut!</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
@@ -146,37 +37,42 @@
           consequatur harum. Optio laborum incidunt ipsum nobis praesentium eius
           dolorum voluptatum! Lorem ipsum dolor sit, amet consectetur
           adipisicing elit. Mollitia fugit recusandae explicabo cumque illum
-          sapiente dolor consectetur ducimus.
+          sapiente dolor consectetur ducimus. Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Commodi velit iure optio.
         </p>
-        <button>contact</button>
-        <a
-          href="https://drive.google.com/file/d/1ZQyzVvXE2s5JT4w0PmIbKlx1YWby7NcZ/view?usp=sharing"
-          target="_blank"
-          >Download CV
-          <ion-icon class="download-icon" name="download-outline"></ion-icon
-        ></a>
+        <div class="left-actions">
+          <a class="contact-btn" href="/contact.html">contact</a>
+          <a
+            href="https://drive.google.com/file/d/1ZQyzVvXE2s5JT4w0PmIbKlx1YWby7NcZ/view?usp=sharing"
+            target="_blank"
+            >Download CV
+            <ion-icon class="download-icon" name="download-outline"></ion-icon
+          ></a>
+        </div>
+        <div class="social-icons">
+          <a href="https://www.instagram.com/jivvmae/" target="_blank"
+            ><ion-icon name="logo-instagram"></ion-icon
+          ></a>
+          <a href="https://www.linkedin.com/in/jimmiandreansa/" target="_blank"
+            ><ion-icon name="logo-linkedin"></ion-icon
+          ></a>
+          <a href="https://github.com/jimmiandreansa" target="_blank"
+            ><ion-icon name="logo-github"></ion-icon
+          ></a>
+          <a
+            href="https://x.com/BioGraph07?t=ca6K9bPdO1sY46IPqLkrlQ&s=08"
+            target="_blank"
+            ><ion-icon name="logo-twitter"></ion-icon
+          ></a>
+          <a
+            href="https://www.facebook.com/jimmi.andreansa.779/"
+            target="_blank"
+            ><ion-icon name="logo-facebook"></ion-icon
+          ></a>
+        </div>
       </div>
-      <div class="middle">
-        <a href="https://www.instagram.com/jivvmae/" target="_blank"
-          ><ion-icon name="logo-instagram"></ion-icon
-        ></a>
-        <a href="https://www.linkedin.com/in/jimmiandreansa/" target="_blank"
-          ><ion-icon name="logo-linkedin"></ion-icon
-        ></a>
-        <a href="https://github.com/jimmiandreansa" target="_blank"
-          ><ion-icon name="logo-github"></ion-icon
-        ></a>
-        <a
-          href="https://x.com/BioGraph07?t=ca6K9bPdO1sY46IPqLkrlQ&s=08"
-          target="_blank"
-          ><ion-icon name="logo-twitter"></ion-icon
-        ></a>
-        <a href="https://www.facebook.com/jimmi.andreansa.779/" target="_blank"
-          ><ion-icon name="logo-facebook"></ion-icon
-        ></a>
-      </div>
-      <div class="bottom">
-        <img src="./images/jimmi-andreansa.jpg" alt="My Photo" />
+      <div class="right">
+        <img src="./assets/images/jimmi-andreansa.jpg" alt="My Photo" />
         <div class="profile">
           <h2>Jimmi Andreansa</h2>
           <p>Fullstack Developer</p>
