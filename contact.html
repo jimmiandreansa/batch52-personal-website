@@ -29,36 +29,37 @@
     </nav>
     <main>
       <h1 class="title">Get In Touch</h1>
-      <form action="#">
+      <form onsubmit="formSubmit(event)">
         <div class="input-box">
           <label for="name">Name</label>
-          <input type="text" id="name" autocomplete="off" required/>
+          <input type="text" id="name" autocomplete="off" />
         </div>
         <div class="input-box">
           <label for="email">Email</label>
-          <input type="email" id="email" autocomplete="off" required/>
+          <input type="email" id="email" autocomplete="off" />
         </div>
         <div class="input-box">
           <label for="phone">Phone Number</label>
-          <input type="tel" id="phone" autocomplete="off" required/>
+          <input type="tel" id="phone" autocomplete="off" />
         </div>
         <div class="input-box">
           <label for="subject">Subject</label>
           <select name="subject" id="subject">
-            <option value="fullstack">Fullstack Developer</option>
-            <option value="frontend">Frontend Developer</option>
-            <option value="backend">Backend Developer</option>
+            <option value="Fullstack Developer">Fullstack Developer</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
           </select>
         </div>
         <div class="input-box">
           <label for="message">Your Message</label>
-          <textarea name="message" id="" cols="30" rows="10"  required></textarea>
+          <textarea name="message" id="message" cols="30" rows="10"  ></textarea>
         </div>
-        <button>submit</button>
+        <button type="submit">submit</button>
       </form>
     </main>
 
     <!-- Ionic Icons -->
+    <script src="assets/js/contact.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
