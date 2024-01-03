@@ -44,7 +44,7 @@ nav {
   border-radius: 10px;
 }
 
-.navbar-links .active {
+.navbar-links a.active {
   font-weight: 600;
 }
 

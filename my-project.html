@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Import CSS File -->
+    <link rel="stylesheet" href="./assets/css/general.css" />
+    <link rel="stylesheet" href="./assets/css/navbar.css" />
+    <link rel="stylesheet" href="./assets/css/my-project.css" />
+    <title>Personal Website || Jimmi Andreansa</title>
+  </head>
+
+  <body>
+    <nav>
+      <div class="navbar">
+        <a href="/">
+          <img
+            class="navbar-logo"
+            src="./assets/images/dumbways-logo.png"
+            alt="DumbWays Logo"
+          />
+        </a>
+        <ul class="navbar-links">
+          <li><a class="link" href="/index.html">Home</a></li>
+          <li><a class="link active" href="/my-project.html">My Project</a></li>
+        </ul>
+      </div>
+      <a class="navbar-btn" href="/contact.html">Contact Me</a>
+    </nav>
+    <main>
+      <div class="form-container">
+        <h1 class="title">Add My Project</h1>
+        <form onsubmit="createCard(event)">
+          <div class="input-box">
+            <label for="name">Project Name</label>
+            <input type="text" id="name" autocomplete="off" />
+          </div>
+          <div class="input-date">
+            <div class="input-date-box">
+              <label for="start-date">Start Date</label>
+              <input type="date" id="start-date" />
+            </div>
+            <div class="input-date-box">
+              <label for="end-date">End Date</label>
+              <input type="date" id="end-date" />
+            </div>
+          </div>
+          <div class="input-box">
+            <label for="description">Description</label>
+            <textarea
+              name="description"
+              id="description"
+              cols="30"
+              rows="10"
+            ></textarea>
+          </div>
+          <div class="input-technologies">
+            <label for="ceklis" class="label-technologies">Technologies</label>
+            <div class="input-ceklis">
+              <div class="ceklis" id="ceklis">
+                <input type="checkbox" id="node-js" value="node-js" />
+                <label for="node-js">Node JS</label>
+              </div>
+              <div class="ceklis">
+                <input type="checkbox" id="next-js" value="next-js" />
+                <label for="next-js">Next JS</label>
+              </div>
+              <div class="ceklis">
+                <input type="checkbox" id="react-js" value="react-js" />
+                <label for="react-js">React JS</label>
+              </div>
+              <div class="ceklis">
+                <input type="checkbox" id="vue-js" value="vue-js" />
+                <label for="vue-js">Vue JS</label>
+              </div>
+            </div>
+          </div>
+          <div class="input-box">
+            <label for="image">Upload Image</label>
+            <input type="file" id="image" accept="image/*" />
+          </div>
+          <button class="btn-submit" type="submit">submit</button>
+        </form>
+      </div>
+      <div class="project-container">
+        <h1 class="project-title">My Project</h1>
+        <div class="grid" id="input-project">
+        </div>
+      </div>
+    </main>
+
+    <!-- Ionic Icons -->
+    <script src="/assets/js/my-project.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>

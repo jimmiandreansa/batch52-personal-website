@@ -1,0 +1,71 @@
+main {
+  padding: 40px 100px;
+}
+
+.title {
+  font-size: 32px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.project-info {
+  display: flex;
+  gap: 64px;
+  margin-bottom: 40px;
+}
+
+.project-info img {
+  flex: 1;
+  height: 400px;
+  object-fit: cover;
+}
+
+.project-info .info {
+  width: 450px;
+  padding-top: 20px;
+}
+
+.duration {
+  margin-bottom: 32px;
+}
+
+.duration .info-title,
+.technologies .info-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.duration .time {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.time p,
+.tech-stack p {
+  font-size: 18px;
+  color: rgb(72, 72, 72);
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.tech-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 16px;
+}
+
+.tech-stack {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.project-desc {
+  text-align: justify;
+}

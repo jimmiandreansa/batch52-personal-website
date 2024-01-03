@@ -1,0 +1,244 @@
+/* Form at My Project Page */
+
+.form-container {
+  margin: 40px 0 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-size: 24px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.input-box {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  margin-bottom: 8px;
+}
+
+.input-box label {
+  font-weight: 600;
+}
+
+.input-box input,
+.input-box select {
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.input-box textarea {
+  border: none;
+  height: 120px;
+  border-radius: 4px;
+  padding: 8px 14px;
+  font-size: 16px;
+  resize: none;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+
+.input-date {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.input-date-box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.input-date-box label {
+  font-weight: 600;
+}
+
+.input-date-box input,
+.input-date-box select {
+  border: none;
+  height: 40px;
+  border-radius: 4px;
+  padding: 0 12px;
+  font-size: 16px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+
+.input-technologies {
+  margin-bottom: 8px;
+}
+
+.label-technologies {
+  font-weight: 600;
+}
+
+.input-ceklis {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 8px;
+  margin-top: 8px;
+}
+
+.ceklis input,
+.ceklis label {
+  cursor: pointer;
+}
+
+input[type=file] {
+  background-color: #fff;
+  cursor: pointer;
+  padding: 0;
+}
+
+input[type=file]::file-selector-button {
+  border: none;
+  background-color: rgb(231, 231, 231);
+  height: 100%;
+  cursor: pointer;
+  color: rgb(181, 181, 181);
+  font-weight: 600;
+  padding: 0 8px;
+  transition: all .2s;
+}
+
+input[type=file]::file-selector-button:hover {
+  background: rgb(181, 181, 181);
+  color: #fff;
+}
+
+.btn-submit {
+  align-self: flex-end;
+  width: 120px;
+  margin-top: 24px;
+  padding: 4px 0;
+  font-size: 16px;
+  border: none;
+  color: #ffffff;
+  background-color: #161a30;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-submit:hover {
+  background-color: #000000;
+}
+
+/* Project List */
+
+.project-container {
+  background-color: rgb(249, 249, 249);
+  padding: 64px 0;
+}
+
+.project-title {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  margin-bottom: 64px;
+  text-transform: uppercase;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 32px;
+  column-gap: 32px;
+  padding: 0 64px;
+}
+
+.card {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 16px;
+}
+
+.card-img img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.img-link:hover img {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.card-information {
+  margin-top: 8px;
+}
+
+.card-info-top {
+  margin-bottom: 20px;
+}
+
+.card-info-top .card-info-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.card-info-title a {
+  text-decoration: none;
+  color: #161a30;
+  transition: all .2s;
+}
+
+.card-info-title a:hover {
+  color: #000;
+}
+
+.card-info-top .card-info-time {
+  font-size: 14px;
+  color: grey;
+}
+
+.card-info-middle {
+  font-size: 12px;
+  text-align: justify;
+}
+
+.card-info-bottom {
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.card-info-bottom .card-icon {
+  font-size: 32px;
+  color: #161a30;
+}
+
+.card-info-btn {
+  display: flex;
+  gap: 12px;
+}
+
+.card-btn {
+  width: 100%;
+  margin-top: 24px;
+  padding: 4px 0;
+  font-size: 16px;
+  border: none;
+  color: #ffffff;
+  background-color: #161a30;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.card-btn:hover {
+  background-color: #000000;
+}
