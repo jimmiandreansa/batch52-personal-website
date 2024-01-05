@@ -16,6 +16,16 @@ function createCard(e) {
   let image = document.getElementById("image").files;
   image = URL.createObjectURL(image[0]);
 
+  // Mengambil nilai inputan startDate & endDate
+  const firstDate = document.getElementById("start-date").value;
+  const lastDate = document.getElementById("end-date").value;
+  let startDate = new Date(firstDate);
+  let endDate = new Date(lastDate);
+  const time = Math.abs(endDate - startDate);
+  const days = Math.floor(time / (1000 * 60 * 60 * 24));
+  const months = Math.floor(time / (1000 * 60 * 60 * 24 * 30));
+  const year = startDate.getFullYear();
+
   const nodeJs = document.getElementById("node-js").checked;
   const nextJs = document.getElementById("next-js").checked;
   const reactJs = document.getElementById("react-js").checked;
@@ -23,11 +33,14 @@ function createCard(e) {
 
   const project = {
     name,
+    days,
+    months,
     description,
     nodeJs,
     nextJs,
     reactJs,
     vueJs,
+    year,
     image,
   };
 
@@ -79,10 +92,15 @@ function createCard(e) {
                 <div class="card-info-top">
                   <h3 class="card-info-title">
                     <a href="/project-x.html">
-                      ${isiProject[index].name} - 2024
+                      ${isiProject[index].name} - ${isiProject[index].year}
                     </a>
                   </h3>
-                  <p class="card-info-time">Durasi: 2 Bulan</p>
+                  <p class="card-info-time">Durasi: ${
+                    isiProject[index].days < 30
+                      ? isiProject[index].days
+                      : isiProject[index].months
+                  } ${isiProject[index].days < 30 ? "Hari" : "Bulan"}</p>
+                  </p>
                 </div>
                 <p class="card-info-middle">
                   ${isiProject[index].description}
