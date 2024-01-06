@@ -12,6 +12,7 @@ nav {
 }
 
 .navbar {
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 40px;
@@ -27,37 +28,125 @@ nav {
 }
 
 .navbar-links {
+  width: 100%;
   display: flex;
+  justify-content: space-between;
   gap: 10px;
   list-style: none;
 }
 
-.navbar-links a {
+.navbar-link-left {
+  display: flex;
+  flex-direction: row;
+}
+
+.navbar-link-left a {
   color: #161a30;
   text-decoration: none;
   padding: 8px 20px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.navbar-links a:hover {
+.navbar-link-left a:hover {
   background-color: rgb(231, 231, 231);
   border-radius: 10px;
 }
 
-.navbar-links a.active {
+.navbar-link-left a.active {
   font-weight: 600;
 }
 
-.navbar-btn {
+.navbar-link-right .navbar-btn {
   background-color: #161a30;
   color: #ffffff;
   padding: 8px 24px;
   text-decoration: none;
   font-weight: 400;
   border-radius: 8px;
-  transition: all .2s;
+  transition: all 0.2s;
 }
 
-.navbar-btn:hover {
+.navbar-link-right .navbar-btn:hover {
   background-color: #000000;
+}
+
+.hamburger-container {
+  padding: 1px 4px 0;
+  border-radius: 16px;
+  position: absolute;
+  display: none;
+}
+
+.hamburger {
+  font-size: 24px;
+}
+
+@media screen and (max-width: 992px) {
+  nav {
+    padding: 8px 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  nav {
+    padding: 10px 24px;
+  }
+
+  .navbar-links {
+    background-color: rgb(231, 231, 231);
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 70%;
+    top: 68px;
+    right: 10px;
+    transition: all 0.6s;
+    padding: 20px 0;
+    border-radius: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .navbar-links.hidden {
+    right: -100%;
+  }
+
+  .navbar-link-left {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .navbar-link-left a {
+    width: 240px;
+    background-color: rgb(217, 217, 217);
+    color: #000;
+    padding: 8px 24px;
+    text-decoration: none;
+    font-weight: 400;
+    border-radius: 8px;
+  }
+
+  .navbar-link-right {
+    width: 240px;
+  }
+
+  .hamburger-container {
+    display: flex;
+    align-items: center;
+    right: 22px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .navbar-link-right {
+    width: 220px;
+  }
+
+  .navbar-link-left {
+    width: 100%;
+    align-items: center;
+  }
+
+  .navbar-link-left a {
+    width: 220px;
+  }
 }

@@ -114,3 +114,49 @@ main {
 .right p {
   font-size: 14px;
 }
+
+@media screen and (max-width: 1200px) {
+  main {
+    width: 968px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  main {
+    flex-direction: column;
+    width: 80%;
+  }
+
+  .left {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 20px;
+  }
+  .right {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  main {
+    width: 92%;
+    gap: 20px;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .left-actions {
+    justify-content: space-between;
+  }
+
+  .social-icons {
+    justify-content: center;
+  }
+
+}

@@ -12,6 +12,8 @@
   </head>
 
   <body>
+    
+    <!-- Ini Navbar -->
     <nav>
       <div class="navbar">
         <a href="/">
@@ -21,13 +23,21 @@
             alt="DumbWays Logo"
           />
         </a>
-        <ul class="navbar-links">
-          <li><a class="link" href="/index.html">Home</a></li>
-          <li><a class="link active" href="/my-project.html">My Project</a></li>
+        <ul class="navbar-links hidden" id="navbar-links">
+          <div class="navbar-link-left">
+            <li><a class="link" href="/index.html">Home</a></li>
+            <li><a class="link active" href="/my-project.html">My Project</a></li>
+          </div>
+          <div class="navbar-link-right">
+            <a class="navbar-btn" href="/contact.html">Contact Me</a>
+          </div>
         </ul>
       </div>
-      <a class="navbar-btn" href="/contact.html">Contact Me</a>
+      <div class="hamburger-container" id="hamburger-menu">
+        <i class="fa-solid fa-bars hamburger"></i>
+      </div>
     </nav>
+
     <main>
       <div class="form-container">
         <h1 class="title">Add My Project</h1>
@@ -39,7 +49,7 @@
           <div class="input-date">
             <div class="input-date-box">
               <label for="start-date">Start Date</label>
-              <input type="date" id="start-date" required />
+              <input type="date" id="start-date" placeholder+="Date" required />
             </div>
             <div class="input-date-box">
               <label for="end-date">End Date</label>
@@ -87,12 +97,109 @@
       <div class="project-container">
         <h1 class="project-title">My Project</h1>
         <div class="grid" id="input-project">
+          <div class="card">
+            <div class="card-img">
+              <a class="img-link" href="#">
+                <img
+                src="/assets/images/my-project/project-3.jpg"
+                alt="My-Project"
+              />
+              </a>
+            </div>
+            <div class="card-information">
+              <div class="card-info-top">
+                <h3 class="card-info-title">
+                  <a href="/project-x.html">
+                    Youtube Clone - 2024
+                  </a>
+                </h3>
+                <p class="card-info-time">Durasi: 2 Bulan</p>
+                </p>
+              </div>
+              <p class="card-info-middle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi atque commodi facere error deleniti non quaerat, sit earum, ratione labore numquam hic quis vitae debitis dolor ea, obcaecati tempora accusamus provident odit. Quasi aliquid impedit aut totam velit eum sint?
+              </p>
+              <div class="card-info-bottom">
+                <i class="fa-brands fa-vuejs"></i>
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <div class="card-info-btn">
+                <button class="card-btn">Edit</button>
+                <button class="card-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">
+              <a class="img-link" href="#">
+                <img
+                src="/assets/images/my-project/project-3.jpg"
+                alt="My-Project"
+              />
+              </a>
+            </div>
+            <div class="card-information">
+              <div class="card-info-top">
+                <h3 class="card-info-title">
+                  <a href="/project-x.html">
+                    Youtube Clone - 2024
+                  </a>
+                </h3>
+                <p class="card-info-time">Durasi: 2 Bulan</p>
+                </p>
+              </div>
+              <p class="card-info-middle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi atque commodi facere error deleniti non quaerat, sit earum, ratione labore numquam hic quis vitae debitis dolor ea, obcaecati tempora accusamus provident odit. Quasi aliquid impedit aut totam velit eum sint?
+              </p>
+              <div class="card-info-bottom">
+                <i class="fa-brands fa-vuejs"></i>
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <div class="card-info-btn">
+                <button class="card-btn">Edit</button>
+                <button class="card-btn">Delete</button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-img">
+              <a class="img-link" href="#">
+                <img
+                src="/assets/images/my-project/project-3.jpg"
+                alt="My-Project"
+              />
+              </a>
+            </div>
+            <div class="card-information">
+              <div class="card-info-top">
+                <h3 class="card-info-title">
+                  <a href="/project-x.html">
+                    Youtube Clone - 2024
+                  </a>
+                </h3>
+                <p class="card-info-time">Durasi: 2 Bulan</p>
+                </p>
+              </div>
+              <p class="card-info-middle">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi atque commodi facere error deleniti non quaerat, sit earum, ratione labore numquam hic quis vitae debitis dolor ea, obcaecati tempora accusamus provident odit. Quasi aliquid impedit aut totam velit eum sint?
+              </p>
+              <div class="card-info-bottom">
+                <i class="fa-brands fa-vuejs"></i>
+                <i class="fa-brands fa-react"></i>
+              </div>
+              <div class="card-info-btn">
+                <button class="card-btn">Edit</button>
+                <button class="card-btn">Delete</button>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </main>
 
     <!-- Ionic Icons -->
     <script src="/assets/js/my-project.js"></script>
+    <script src="/assets/js/navbar.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"

@@ -22,8 +22,10 @@ function createCard(e) {
   let startDate = new Date(firstDate);
   let endDate = new Date(lastDate);
   const time = Math.abs(endDate - startDate);
+
   const days = Math.floor(time / (1000 * 60 * 60 * 24));
   const months = Math.floor(time / (1000 * 60 * 60 * 24 * 30));
+  
   const year = startDate.getFullYear();
 
   const nodeJs = document.getElementById("node-js").checked;

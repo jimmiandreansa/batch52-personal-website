@@ -17,6 +17,7 @@ main {
 
 .project-info img {
   flex: 1;
+  /* width: 480px; */
   height: 400px;
   object-fit: cover;
 }
@@ -68,4 +69,73 @@ main {
 
 .project-desc {
   text-align: justify;
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0;
+  }
+
+  .title {
+    text-align: center;
+    padding: 0 20px;
+    font-weight: 600;
+    margin-top: 32px;
+    margin-bottom: 24px;
+    font-size: 20px;
+  }
+
+  .project-info {
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .project-info img {
+    padding: 0 20px;
+  }
+
+  .project-info .info {
+    width: 100%;
+    padding: 0 20px;
+  }
+
+  .tech-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .duration .info-title,
+  .technologies .info-title {
+    font-size: 20px;
+    margin-bottom: 8px;
+  }
+
+  .duration {
+    margin-bottom: 24px;
+  }
+
+  .duration .time {
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .time p,
+  .tech-stack p {
+    font-size: 16px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .tech-grid {
+    gap: 8px;
+  }
+
+  .tech-stack {
+    gap: 8px;
+  }
+
+  .project-desc {
+    padding: 0 20px 40px;
+  }
 }
