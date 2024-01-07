@@ -322,3 +322,21 @@ input[type="file"]::file-selector-button:hover {
     padding: 0;
   }
 }
+
+@media screen and (max-width: 576px) {
+  .project-title {
+    margin: 12px 0;
+  }
+
+  .grid {
+    padding: 20px 24px;
+  }
+
+  .card {
+    border-radius: 8px;
+  }
+
+  .card-img img {
+    border-radius: 4px;
+  }
+}

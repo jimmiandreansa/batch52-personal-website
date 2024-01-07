@@ -149,7 +149,6 @@ main {
 
   .tech-stack {
     gap: 8px;
-    
   }
 
   .project-desc {
@@ -164,15 +163,11 @@ main {
 
   .project-info img {
     padding: 0 24px;
+    width: 100%;
   }
 
   .project-info .info {
     padding: 0 24px;
-  }
-
-  .project-desc {
-    padding: 0 24px;
-    font-size: 12px;
   }
 
   .duration .info-title,
@@ -187,5 +182,10 @@ main {
 
   .icon {
     font-size: 18px;
+  }
+  
+  .project-desc {
+    padding: 0 24px 64px;
+    font-size: 12px;
   }
 }
