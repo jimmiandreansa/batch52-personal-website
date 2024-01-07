@@ -16,14 +16,13 @@ main {
 }
 
 .project-info img {
-  flex: 1;
-  /* width: 480px; */
-  height: 400px;
+  width: 600px;
+  height: 100%;
   object-fit: cover;
 }
 
 .project-info .info {
-  width: 450px;
+  width: 70%;
   padding-top: 20px;
 }
 
@@ -71,6 +70,22 @@ main {
   text-align: justify;
 }
 
+@media screen and (max-width: 1200px) {
+  .project-info {
+    gap: 40px;
+  }
+
+  .project-info img {
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .project-info img {
+    width: 420px;
+  }
+}
+
 @media screen and (max-width: 768px) {
   main {
     padding: 0;
@@ -78,11 +93,11 @@ main {
 
   .title {
     text-align: center;
-    padding: 0 20px;
+    padding: 0 64px;
     font-weight: 600;
     margin-top: 32px;
     margin-bottom: 24px;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .project-info {
@@ -91,12 +106,13 @@ main {
   }
 
   .project-info img {
-    padding: 0 20px;
+    padding: 0 64px;
+    width: 100%;
   }
 
   .project-info .info {
+    padding: 0 64px;
     width: 100%;
-    padding: 0 20px;
   }
 
   .tech-grid {
@@ -133,9 +149,43 @@ main {
 
   .tech-stack {
     gap: 8px;
+    
   }
 
   .project-desc {
-    padding: 0 20px 40px;
+    padding: 0 64px 40px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .title {
+    font-size: 20px;
+  }
+
+  .project-info img {
+    padding: 0 24px;
+  }
+
+  .project-info .info {
+    padding: 0 24px;
+  }
+
+  .project-desc {
+    padding: 0 24px;
+    font-size: 12px;
+  }
+
+  .duration .info-title,
+  .technologies .info-title {
+    font-size: 16px;
+  }
+
+  .time p,
+  .tech-stack p {
+    font-size: 14px;
+  }
+
+  .icon {
+    font-size: 18px;
   }
 }
