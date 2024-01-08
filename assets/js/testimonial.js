@@ -49,6 +49,13 @@ class AuthorTestimonial extends Testimonial {
       />
       <p class="content-testimoni">"${this.content}"</p>
       <p class="author-testimoni">~ ${this.author}</p>
+      <div class="testimonial-star">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
     </div>
     `
   }
@@ -65,6 +72,13 @@ class CompanyTestimonial extends Testimonial {
       />
       <p class="content-testimoni">"${this.content}"</p>
       <p class="author-testimoni">~ ${this.author} Company</p>
+      <div class="testimonial-star">
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-solid fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+          <i class="fa-regular fa-star"></i>
+        </div>
     </div>
     `
   }
