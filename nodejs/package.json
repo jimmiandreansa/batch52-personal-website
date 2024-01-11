@@ -1,0 +1,15 @@
+{
+  "name": "batch-52",
+  "version": "1.0.0",
+  "description": "DumbWays Bootcamp",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "Jimmi Andreansa",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
