@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!-- Import CSS File -->
+    <!-- Import CSS General -->
     <link rel="stylesheet" href="./assets/css/general.css" />
-    <link rel="stylesheet" href="./assets/css/navbar.css" />
-    <link rel="stylesheet" href="./assets/css/testimonial.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -23,11 +21,9 @@
     <title>Personal Website || Jimmi Andreansa</title>
   </head>
 
-  <body style="padding-top: 64px">
+  <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
     <!-- Ini Navbar -->
-    <nav
-      class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0"
-    >
+    <nav class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0">
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img
@@ -51,18 +47,18 @@
         <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item mx-3">
-              <a class="nav-link fs-5" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link fs-5" href="/my-project.html">Add Project</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link active fs-5" href="/testimonial.html"
-                >Testimonials</a
+              <a class="nav-link fs-5" aria-current="page" href="/"
+                >Home</a
               >
             </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link fs-5" href="/project">Add Project</a>
+            </li>
+            <li class="nav-item mx-3">
+              <a class="nav-link fs-5" href="/testimonials">Testimonials</a>
+            </li>
           </ul>
-          <a class="btn btn-dark fs-5 py-1 px-3" href="/contact.html">
+          <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">
             Contact Me
           </a>
         </div>
@@ -70,48 +66,46 @@
     </nav>
 
     <main>
-      <h1 class="title-testimoni">My Testimonials</h1>
-      <div class="testimonial-star-choice">
-        <button class="star-choice-button" onclick="allTestimonial()">
-          All
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(5)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(4)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(3)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(2)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(1)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
+      <div class="container">
+        <h2 class="fw-bold text-center mt-5 text-uppercase">Get In Touch</h2>
+        <div class="row justify-content-center my-5">
+          <div class="col-lg-6">
+            <form onsubmit="formSubmit(event)">
+              <div class="mb-3">
+                <label for="name" class="form-label fw-bold">Name</label>
+                <input type="name" class="form-control" id="name" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Email</label>
+                <input type="email" class="form-control" id="email" />
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label fw-bold">Phone Number</label>
+                <input type="tel" class="form-control" id="email" />
+              </div>
+              <div class="mb-3">
+                <label for="subject" class="form-label fw-bold">Subject</label>
+                <select class="form-select" name="subject" id="subject">
+                  <option value="fullstack">Fullstack Developer</option>
+                  <option value="frontend">Frontend Developer</option>
+                  <option value="backend">Backend Developer</option>
+                </select>
+              </div>
+              <div class="mb-4">
+                <label for="message" class="form-label fw-bold">Message</label>
+                <textarea
+                  id="message"
+                  class="form-control"
+                  style="height: 140px; resize: none"
+                ></textarea>
+              </div>
+              <div class="text-end">
+                <button class="btn btn-dark">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="grid-testimoni" id="testimonials"></div>
     </main>
 
     <!-- Ionic Icons -->
@@ -125,8 +119,8 @@
       integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/js/testimonial-ajax.js"></script>
     <script src="/assets/js/navbar.js"></script>
+    <script src="assets/js/contact.js"></script>
     <script
       type="module"
       src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
