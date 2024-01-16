@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,12 +19,26 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <title>Personal Website || Jimmi Andreansa</title>
+    <!-- Bootstrap CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <!-- Bootstrap Icons CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
+    <title>{{data.name}} || Jimmi Andreansa</title>
   </head>
-  
+
   <body style="padding-top: 64px">
     <!-- Ini Navbar -->
-    <nav class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0">
+    <nav
+      class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0"
+    >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img
@@ -49,9 +62,11 @@
         <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item mx-3">
-              <a class="nav-link active fs-5" aria-current="page" href="/"
-                >Home</a
-              >
+              <a
+                class="nav-link active fs-5"
+                aria-current="page"
+                href="/"
+              >Home</a>
             </li>
             <li class="nav-item mx-3">
               <a class="nav-link active fs-5" href="/project">Add Project</a>
@@ -68,72 +83,80 @@
     </nav>
 
     <main>
-      <h1 class="title">DumbWays Web App Cloningan Masa Depan</h1>
-      <div class="project-info">
-        <img src="/assets/images/my-project/project-1.jpg" alt="My-Project" />
-        <div class="info">
-          <div class="duration">
-            <h2 class="info-title">Duration</h2>
-            <div class="time">
-              <ion-icon class="icon" name="calendar-outline"></ion-icon>
-              <p>12 Jan 2024 - 11 Feb 2024</p>
+        <h1 class="title">{{data.name}}</h1>
+        <div class="project-info">
+          <img src="/assets/images/my-project/project-1.jpg" alt="My-Project" />
+          <div class="info">
+            <div class="duration">
+              <h2 class="info-title">Duration</h2>
+              <div class="time">
+                <ion-icon class="icon" name="calendar-outline"></ion-icon>
+                <p>{{data.startdate}} s/d {{data.enddate}}</p>
+              </div>
+              <div class="time">
+                <ion-icon class="icon" name="timer-outline"></ion-icon>
+                <p>{{data.duration}}</p>
+              </div>
             </div>
-            <div class="time">
-              <ion-icon class="icon" name="timer-outline"></ion-icon>
-              <p>1 Month</p>
-            </div>
-          </div>
-          <div class="technologies">
-            <h2 class="info-title">Technologies</h2>
-            <div class="tech-grid">
-              <div class="tech-stack">
-                <ion-icon class="icon" name="logo-react"></ion-icon>
-                <p>React JS</p>
-              </div>
-              <div class="tech-stack">
-                <ion-icon class="icon" name="logo-javascript"></ion-icon>
-                <p>JavaScript</p>
-              </div>
-              <div class="tech-stack">
-                <ion-icon class="icon" name="logo-nodejs"></ion-icon>
-                <p>Node JS</p>
-              </div>
-              <div class="tech-stack">
-                <ion-icon class="icon" name="terminal-outline"></ion-icon>
-                <p>Terminal</p>
+            <div class="technologies">
+              <h2 class="info-title">Technologies</h2>
+              <div class="tech-grid">
+                {{#if data.angular}}
+                  <div class="tech-stack">
+                    <i class="fa-brands fa-angular fs-2"></i>
+                    <p>Angular</p>
+                  </div>
+                {{/if}}
+                {{#if data.laravel}}
+                  <div class="tech-stack">
+                    <i class="fa-brands fa-laravel fs-2"></i>
+                    <p>Laravel</p>
+                  </div>
+                {{/if}}
+                {{#if data.react}}
+                  <div class="tech-stack">
+                    <i class="fa-brands fa-react fs-2"></i>
+                    <p>React JS</p>
+                  </div>
+                {{/if}}
+                {{#if data.vue}}
+                  <div class="tech-stack">
+                    <i class="fa-brands fa-vuejs fs-2"></i>
+                    <p>Vue JS</p>
+                  </div>
+                {{/if}}
               </div>
             </div>
           </div>
         </div>
-      </div>
       <div class="project-desc">
         <p>
-          &emsp; &emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-          reprehenderit omnis obcaecati sapiente magni eos eius adipisci, dolor
-          optio ut suscipit saepe explicabo distinctio aliquam rerum atque aut.
-          Consequatur nesciunt laborum sint necessitatibus a minus, vel sed
+          &emsp; &emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Fugiat reprehenderit omnis obcaecati sapiente magni eos eius adipisci,
+          dolor optio ut suscipit saepe explicabo distinctio aliquam rerum atque
+          aut. Consequatur nesciunt laborum sint necessitatibus a minus, vel sed
           magnam repellat, illo maxime dolorem commodi corrupti iste! Similique,
           maxime sed? Nisi exercitationem ratione consectetur?
         </p>
         <p>
-          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus quia
-          iusto inventore animi ad dolore, aperiam reprehenderit architecto
-          culpa doloremque! Quod voluptatum ratione unde quas. Accusamus, non
-          ducimus eum ratione quam est fugit dolorem, dolore expedita
-          necessitatibus dicta quaerat vitae quisquam ab amet quos reiciendis
-          error reprehenderit pariatur aspernatur omnis mollitia velit
-          perferendis? Cum recusandae officiis reprehenderit ab laudantium nisi
-          ipsum optio totam magni.
+          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Delectus quia iusto inventore animi ad dolore, aperiam reprehenderit
+          architecto culpa doloremque! Quod voluptatum ratione unde quas.
+          Accusamus, non ducimus eum ratione quam est fugit dolorem, dolore
+          expedita necessitatibus dicta quaerat vitae quisquam ab amet quos
+          reiciendis error reprehenderit pariatur aspernatur omnis mollitia
+          velit perferendis? Cum recusandae officiis reprehenderit ab laudantium
+          nisi ipsum optio totam magni.
         </p>
         <p>
-          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione
-          commodi officiis adipisci iure voluptatibus! Accusamus beatae,
+          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Ratione commodi officiis adipisci iure voluptatibus! Accusamus beatae,
           provident officiis dolorum officia ullam dolorem, ipsum iusto quo cum
           illo omnis quibusdam a distinctio ut.
         </p>
         <p>
-          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint,
-          temporibus. Voluptatem quod voluptatibus dolores sequi. Sapiente
+          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Sint, temporibus. Voluptatem quod voluptatibus dolores sequi. Sapiente
           molestiae quidem beatae accusamus consectetur est, facere praesentium
           voluptas impedit quia omnis fuga repellat voluptatum tempora officiis
           fugit quae. Minima cum, consequuntur nam quasi laborum laboriosam,
@@ -143,37 +166,37 @@
           autem quaerat iste eum quod, inventore vel!
         </p>
         <p>
-          &emsp; &emsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Veritatis
-          sint, placeat voluptates hic repellendus vel mollitia voluptate
-          perferendis magni pariatur earum inventore illo in sequi accusamus
-          natus cupiditate illum! Quis perferendis, officiis doloribus nulla rem
-          maxime quidem reiciendis unde omnis dolor quasi maiores tenetur quo
-          molestiae natus illo. Eum nostrum error, harum laboriosam quod aperiam
-          molestiae quae vero accusantium repellendus, expedita eaque voluptas
-          ipsum illum perferendis non tempore minima earum nobis ea officia id?
-          Perspiciatis in dolor quia sit itaque? Modi adipisci quam hic debitis
-          facilis unde optio animi nobis molestias sit ipsum harum, repudiandae
-          alias blanditiis illum totam commodi.
+          &emsp; &emsp;Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Veritatis sint, placeat voluptates hic repellendus vel mollitia
+          voluptate perferendis magni pariatur earum inventore illo in sequi
+          accusamus natus cupiditate illum! Quis perferendis, officiis doloribus
+          nulla rem maxime quidem reiciendis unde omnis dolor quasi maiores
+          tenetur quo molestiae natus illo. Eum nostrum error, harum laboriosam
+          quod aperiam molestiae quae vero accusantium repellendus, expedita
+          eaque voluptas ipsum illum perferendis non tempore minima earum nobis
+          ea officia id? Perspiciatis in dolor quia sit itaque? Modi adipisci
+          quam hic debitis facilis unde optio animi nobis molestias sit ipsum
+          harum, repudiandae alias blanditiis illum totam commodi.
         </p>
         <p>
-          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quisquam,
-          cum. Numquam amet inventore doloribus laborum debitis odio ea
-          perferendis? Dicta adipisci laudantium eaque corrupti repellendus
+          &emsp; &emsp;Lorem ipsum dolor sit amet consectetur, adipisicing elit.
+          Quisquam, cum. Numquam amet inventore doloribus laborum debitis odio
+          ea perferendis? Dicta adipisci laudantium eaque corrupti repellendus
           nobis, tempore consequuntur labore cum voluptatibus pariatur inventore
           numquam rerum voluptate dolor delectus veritatis quos?
         </p>
         <p>
-          &emsp; &emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem, totam
-          illo. Illo, exercitationem veritatis. Quidem sapiente magni reiciendis
-          saepe culpa illum maiores? Quasi rem dolor explicabo ipsa doloribus
-          culpa eos nam quibusdam. Sint ab quam excepturi porro? A, ratione!
-          Enim pariatur saepe dolor temporibus fugit quo consectetur, dolorem
-          quae. Quo, excepturi rem. Quae illo veniam labore amet magni molestiae
-          nobis cumque neque, tenetur excepturi cum, ad alias necessitatibus.
-          Facilis necessitatibus dignissimos doloribus ex debitis consequuntur
-          nemo. Nemo ipsum dolorum, sequi ad exercitationem, placeat mollitia,
-          non ratione fugit magni voluptates beatae molestiae labore! Eos atque
-          dolor ad velit, placeat voluptas!
+          &emsp; &emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+          Autem, totam illo. Illo, exercitationem veritatis. Quidem sapiente
+          magni reiciendis saepe culpa illum maiores? Quasi rem dolor explicabo
+          ipsa doloribus culpa eos nam quibusdam. Sint ab quam excepturi porro?
+          A, ratione! Enim pariatur saepe dolor temporibus fugit quo
+          consectetur, dolorem quae. Quo, excepturi rem. Quae illo veniam labore
+          amet magni molestiae nobis cumque neque, tenetur excepturi cum, ad
+          alias necessitatibus. Facilis necessitatibus dignissimos doloribus ex
+          debitis consequuntur nemo. Nemo ipsum dolorum, sequi ad
+          exercitationem, placeat mollitia, non ratione fugit magni voluptates
+          beatae molestiae labore! Eos atque dolor ad velit, placeat voluptas!
         </p>
       </div>
     </main>

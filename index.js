@@ -1,4 +1,6 @@
-const express = require("express");
+// Import
+import express from "express";
+
 const app = express();
 const port = 3000;
 
@@ -16,34 +18,19 @@ app.get("/project", myProject);
 app.get("/project-detail/:id", projectDetail);
 app.get("/testimonials", testimonial);
 app.post("/project", handlePostProject);
+app.get("/delete/:id", handleDeleteProject)
+app.get("/edit-project/:id", editProject);
+app.post("/edit-project", handleEditProject)
 
-const data = [
-  {
-    id: 1,
-    name: "Binic Company - 2024",
-    description:
-      "Ketiganya sebenarnya tidak memiliki arti kata secara khusus; namun article mempunyai fungsi khusus dalam melengkapi suatu frasa atau klausa, yang secara spesifik berhubungan dengan noun atau kata benda di dalamnya.",
-  },
-  {
-    id: 2,
-    name: "Bionic Play - 2023",
-    description:
-      "Ketiganya sebenarnya tidak memiliki arti kata secara khusus; namun article mempunyai fungsi khusus dalam melengkapi suatu frasa atau klausa, yang secara spesifik berhubungan dengan noun atau kata benda di dalamnya.",
-  },
-  {
-    id: 3,
-    name: "Bionic Music - 2024",
-    description:
-      "Ketiganya sebenarnya tidak memiliki arti kata secara khusus; namun article mempunyai fungsi khusus dalam melengkapi suatu frasa atau klausa, yang secara spesifik berhubungan dengan noun atau kata benda di dalamnya.",
-  },
-];
+// Ini adalah penampungan data dari inputan user
+const data = [];
 
 function home(req, res) {
-  res.render("index");
+  res.render("index", {title: "Personal Website"});
 }
 
 function contact(req, res) {
-  res.render("contact");
+  res.render("contact", {title: "Contact Me"});
 }
 
 function myProject(req, res) {
@@ -51,23 +38,127 @@ function myProject(req, res) {
 }
 
 function testimonial(req, res) {
-  res.render("testimonial");
+  res.render("testimonial", {title: "My Testimonials"});
 }
 
 function projectDetail(req, res) {
-  const idSaja = req.params;
-  const { id } = req.params;
+  const {id} = req.params
+  const dataDetail = data[id]
 
-  console.log(idSaja);
-  console.log(id);
-
-  res.render("project-detail");
+  res.render("project-detail", {data: dataDetail})
 }
 
+// Fungsi untuk meng-handle post project dengan method POST
 function handlePostProject(req, res) {
-  console.log("Berhasil menggunakan Method POST")
+  // Mendapatkan data-data dari inputan user
+  const { 
+    name, 
+    startdate, 
+    enddate, 
+    description, 
+    angular, 
+    laravel, 
+    react, 
+    vue 
+  } = req.body;
+  // Perhitungan untuk menentukan durasi project
+  const startDate = new Date(startdate)
+  const endDate = new Date(enddate)
+  const time = Math.abs(endDate - startDate);
 
+  const days = Math.floor(time / (1000 * 60 * 60 * 24));
+  const months = Math.floor(time / (1000 * 60 * 60 * 24 * 30));
+  const years = Math.floor(time / (1000 * 60 * 60 * 24 * 30 * 12));
+  // Nilai tahun untuk ditampilkan ke judul project
+  const year = startDate.getFullYear()
+  // Fungsi pengkondisian untuk durasi (Hari, Bulan, dan Tahun)
+  function duration() {
+    if(days < 30) {
+      return days + " Hari"
+    } else if (months < 12) {
+      return months + " Bulan"
+    } else {
+      return years + " Tahun"
+    }
+  }
+  // Memasukkan data yang user input kedalam penampungan data
+  data.unshift({
+    name,
+    startdate, 
+    enddate, 
+    duration: duration(),
+    year,
+    description, 
+    angular, 
+    laravel, 
+    react, 
+    vue
+  })
+  // Melempar user ke halaman project
+  res.redirect("/project#my-project");
+}
+
+function handleDeleteProject(req, res) {
+  const {id} = req.params
+  data.splice(id, 1)
   res.redirect("/project")
+}
+
+function editProject(req, res) {
+  const {id} = req.params
+  const dataEdit = data[id]
+  res.render("edit-project", {data: dataEdit})
+}
+
+function handleEditProject(req, res) {
+  const {id} = req.params
+  let { 
+    name, 
+    startdate, 
+    enddate, 
+    description, 
+    angular, 
+    laravel, 
+    react, 
+    vue 
+  } = req.body;
+
+  let startDate = new Date(startdate)
+  let endDate = new Date(enddate)
+  let time = Math.abs(endDate - startDate);
+
+  let days = Math.floor(time / (1000 * 60 * 60 * 24));
+  let months = Math.floor(time / (1000 * 60 * 60 * 24 * 30));
+  let years = Math.floor(time / (1000 * 60 * 60 * 24 * 30 * 12));
+  const year = startDate.getFullYear()
+
+  // Fungsi pengkondisian untuk durasi (Hari, Bulan, dan Tahun)
+  function duration() {
+    if(days < 30) {
+      return days + " Hari"
+    } else if (months < 12) {
+      return months + " Bulan"
+    } else {
+      return years + " Tahun"
+    }
+  }
+
+  data[id] = {
+    name,
+    startdate, 
+    enddate, 
+    duration: duration(),
+    year,
+    description, 
+    angular, 
+    laravel, 
+    react, 
+    vue
+  }
+
+  const datas = data[id]
+  data.splice(id, 1, datas)
+  res.redirect("/project#my-project");
 }
 
 app.listen(port, () => {

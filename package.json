@@ -2,6 +2,7 @@
   "name": "batch-52",
   "version": "1.0.0",
   "description": "DumbWays Bootcamp",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
