@@ -81,10 +81,14 @@
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
             <form method="POST" action="/edit-project" >
+
+              {{!-- Inputan untuk Name --}}
               <div class="mb-3">
                 <label for="name" class="form-label fw-bold">Name</label>
                 <input type="name" class="form-control" name="name" value="{{data.name}}" />
               </div>
+
+              {{!-- Inputan untuk Start Date dan End Date --}}
               <div class="row mb-3">
                 <div class="col">
                   <label for="start-date" class="form-label fw-bold"
@@ -94,7 +98,7 @@
                     type="date"
                     class="form-control"
                     name="startdate"
-                    value="{{data.startdate}}"
+                    value="{{data.start_date}}"
                   />
                 </div>
                 <div class="col">
@@ -105,10 +109,12 @@
                     type="date"
                     class="form-control"
                     name="enddate"
-                    value="{{data.enddate}}"
+                    value="{{data.end_date}}"
                   />
                 </div>
               </div>
+
+              {{!-- Inputan untuk Deskripsi --}}
               <div class="mb-3">
                 <label for="description" class="form-label fw-bold"
                   >Description</label
@@ -120,6 +126,7 @@
                 >{{data.description}}</textarea>
               </div>
 
+              {{!-- Inputan untuk Technologies --}}
               <div class="mb-3">
                 <label for="technologies" class="form-label fw-bold"
                   >Technologies</label
@@ -130,11 +137,8 @@
                       class="form-check-input"
                       type="checkbox"
                       value="angular"
-                      name="angular"
+                      name="tech"
                       id="angular"
-                      {{#if data.angular}}
-                        checked
-                      {{/if}}
                     />
                     <label class="form-check-label" for="angular">
                       Angular
@@ -145,11 +149,8 @@
                       class="form-check-input"
                       type="checkbox"
                       value="laravel"
-                      name="laravel"
+                      name="tech"
                       id="laravel"
-                      {{#if data.laravel}}
-                        checked
-                      {{/if}}
                     />
                     <label class="form-check-label" for="laravel">
                       Laravel
@@ -161,40 +162,40 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value="react"
-                      name="react"
-                      id="react-js"
-                      {{#if data.react}}
-                        checked
-                      {{/if}}
+                      value="js"
+                      name="tech"
+                      id="javascript"
                     />
-                    <label class="form-check-label" for="react-js">
-                      React JS
+                    <label class="form-check-label" for="javascript">
+                      JavaScript
                     </label>
                   </div>
                   <div class="form-check col">
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value="vue"
-                      name="vue"
-                      id="vue-js"
-                      {{#if data.vue}}
-                        checked
-                      {{/if}}
+                      value="node"
+                      name="tech"
+                      id="node-js"
                     />
-                    <label class="form-check-label" for="vue-js">
-                      Vue JS
+                    <label class="form-check-label" for="node-js">
+                      Node JS
                     </label>
                   </div>
                 </div>
               </div>
+
+              {{!-- Inputan untuk Image --}}
               <div class="mb-4">
                 <label for="image" class="form-label fw-bold"
                   >Upload Image</label
                 >
                 <input type="file" class="form-control" name="image" />
               </div>
+
+              {{!-- Ini inputan untuk menangkap ID --}}
+              <input type="hidden" name="id" value="{{data.id}}">
+
               <div class="text-end">
                 <button class="btn btn-dark" type="submit">Edit</button>
               </div>
@@ -204,6 +205,17 @@
       </div>
 
     <!-- Ionic Icons -->
+    <script>
+      const selectedTechs = '{{data.tech}}'; 
+      const angularBox = document.getElementById("angular"); 
+      const laravelBox = document.getElementById("laravel"); 
+      const javascriptBox = document.getElementById("javascript"); 
+      const nodeBox = document.getElementById("node-js");
+      angularBox.checked = selectedTechs.includes("angular");
+      laravelBox.checked = selectedTechs.includes("laravel");
+      javascriptBox.checked = selectedTechs.includes("js");
+      nodeBox.checked = selectedTechs.includes("node");
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

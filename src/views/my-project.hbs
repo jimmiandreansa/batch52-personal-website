@@ -81,10 +81,14 @@
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
             <form action="/project" method="POST">
+
+              {{!-- Input Name --}}
               <div class="mb-3">
                 <label for="name" class="form-label fw-bold">Name</label>
-                <input type="name" class="form-control" name="name" />
+                <input type="name" class="form-control" name="name" required/>
               </div>
+
+              {{!-- Input Date --}}
               <div class="row mb-3">
                 <div class="col">
                   <label for="start-date" class="form-label fw-bold"
@@ -94,6 +98,7 @@
                     type="date"
                     class="form-control"
                     name="startdate"
+                    required
                   />
                 </div>
                 <div class="col">
@@ -104,6 +109,7 @@
                     type="date"
                     class="form-control"
                     name="enddate"
+                    required
                   />
                 </div>
               </div>
@@ -113,11 +119,13 @@
                 >
                 <textarea
                   name="description"
+                  required
                   class="form-control"
                   style="height: 140px; resize: none"
                 ></textarea>
               </div>
 
+              {{!-- Input Technologies (checkbox) --}}
               <div class="mb-3">
                 <label for="technologies" class="form-label fw-bold"
                   >Technologies</label
@@ -128,7 +136,7 @@
                       class="form-check-input"
                       type="checkbox"
                       value="angular"
-                      name="angular"
+                      name="tech"
                       id="angular"
                     />
                     <label class="form-check-label" for="angular">
@@ -140,7 +148,7 @@
                       class="form-check-input"
                       type="checkbox"
                       value="laravel"
-                      name="laravel"
+                      name="tech"
                       id="laravel"
                     />
                     <label class="form-check-label" for="laravel">
@@ -153,34 +161,38 @@
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value="react"
-                      name="react"
-                      id="react-js"
+                      value="js"
+                      name="tech"
+                      id="javascript"
                     />
-                    <label class="form-check-label" for="react-js">
-                      React JS
+                    <label class="form-check-label" for="javascript">
+                      JavaScript
                     </label>
                   </div>
                   <div class="form-check col">
                     <input
                       class="form-check-input"
                       type="checkbox"
-                      value="vue"
-                      name="vue"
-                      id="vue-js"
+                      value="node"
+                      name="tech"
+                      id="node-js"
                     />
-                    <label class="form-check-label" for="vue-js">
-                      Vue JS
+                    <label class="form-check-label" for="node-js">
+                      Node JS
                     </label>
                   </div>
                 </div>
               </div>
+
+              {{!-- Input Image --}}
               <div class="mb-4">
                 <label for="image" class="form-label fw-bold"
                   >Upload Image</label
                 >
                 <input type="file" class="form-control" name="image" />
               </div>
+
+              {{!-- Button Submit --}}
               <div class="text-end">
                 <button class="btn btn-dark" type="submit">Submit</button>
               </div>
@@ -189,6 +201,7 @@
         </div>
       </div>
 
+      {{!-- Ini Bagian My Project --}}
       <div class="bg-light py-4 px-5" id="my-project">
         <h2 class="fw-bold text-center my-5 text-uppercase">My Project</h2>
         <div class="container" id="input-project">
@@ -196,7 +209,7 @@
             {{#each data}}
             <div class="col-lg-4 col-md-6">
               <div class="card p-3 rounded-4" style="width: 100%">
-                <a href="/project-detail/{{@index}}">
+                <a href="/project-detail/{{this.id}}">
                   <img
                     class="rounded-2 mb-3"
                     src="/assets/images/my-project/project-1.jpg"
@@ -205,32 +218,23 @@
                   />
                 </a>
                 <a
-                  href="/project-detail/{{@index}}"
+                  href="/project-detail/{{this.id}}"
                   class="text-decoration-none text-dark"
                 >
                   <h5 class="card-title">{{this.name}} - {{this.year}}</h5>
                 </a>
                 <p class="text-secondary">Durasi: {{this.duration}}</p>
                 <div class="d-flex gap-3 mb-4 mt-2">
-                  {{#if this.angular}}
-                    <i class="fa-brands fa-angular fs-2"></i>
-                  {{/if}}
-                  {{#if this.laravel}}
-                    <i class="fa-brands fa-laravel fs-2"></i>
-                  {{/if}}
-                  {{#if this.react}}
-                    <i class="fa-brands fa-react fs-2"></i>
-                  {{/if}}
-                  {{#if this.vue}}
-                    <i class="fa-brands fa-vuejs fs-2"></i>
-                  {{/if}}
+                  {{#each this.tech}}
+                    <i class="fa-brands fa-{{this}} fs-2"></i>
+                  {{/each}}
                 </div>
                 <p class="card-text">
                   {{this.description}}
                 </p>
                 <div class="card-info-btn d-flex gap-2">
-                  <a href="/edit-project/{{@index}}" class="btn btn-dark" style="width: 100%">Edit</a>
-                  <a href="/delete/{{@index}}" class="btn btn-dark" style="width: 100%">
+                  <a href="/edit-project/{{this.id}}" class="btn btn-dark" style="width: 100%">Edit</a>
+                  <a href="/delete/{{this.id}}" class="btn btn-dark" style="width: 100%">
                     Delete
                   </a>
                 </div>

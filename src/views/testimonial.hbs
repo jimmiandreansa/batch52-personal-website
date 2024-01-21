@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -23,7 +22,7 @@
     <title>{{title}} - Jimmi Andreansa</title>
   </head>
 
-  <body style="padding-top: 64px">
+  <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
     <!-- Ini Navbar -->
     <nav
       class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0"
@@ -57,9 +56,10 @@
               <a class="nav-link fs-5" href="/project">Add Project</a>
             </li>
             <li class="nav-item mx-3">
-              <a class="nav-link active fs-5" href="/testimonials"
-                >Testimonials</a
-              >
+              <a
+                class="nav-link active fs-5"
+                href="/testimonials"
+              >Testimonials</a>
             </li>
           </ul>
           <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">
@@ -70,48 +70,50 @@
     </nav>
 
     <main>
-      <h1 class="title-testimoni">My Testimonials</h1>
-      <div class="testimonial-star-choice">
-        <button class="star-choice-button" onclick="allTestimonial()">
-          All
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(5)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(4)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(3)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(2)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
-        <button class="star-choice-button" onclick="filteredTestimonial(1)">
-          <i class="fa-solid fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-          <i class="fa-regular fa-star"></i>
-        </button>
+      <div class="container">
+        <h2 class="fw-bold text-center mt-2 mb-5 text-uppercase">My Testimonials</h2>
+        <div class="testimonial-star-choice">
+          <button class="star-choice-button" onclick="allTestimonial()">
+            All
+          </button>
+          <button class="star-choice-button" onclick="filteredTestimonial(5)">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </button>
+          <button class="star-choice-button" onclick="filteredTestimonial(4)">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </button>
+          <button class="star-choice-button" onclick="filteredTestimonial(3)">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </button>
+          <button class="star-choice-button" onclick="filteredTestimonial(2)">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </button>
+          <button class="star-choice-button" onclick="filteredTestimonial(1)">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+          </button>
+        </div>
+        <div class="grid-testimoni" id="testimonials"></div>
       </div>
-      <div class="grid-testimoni" id="testimonials"></div>
     </main>
 
     <!-- Ionic Icons -->

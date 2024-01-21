@@ -63,7 +63,7 @@
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item mx-3">
               <a
-                class="nav-link active fs-5"
+                class="nav-link fs-5"
                 aria-current="page"
                 href="/"
               >Home</a>
@@ -91,7 +91,7 @@
               <h2 class="info-title">Duration</h2>
               <div class="time">
                 <ion-icon class="icon" name="calendar-outline"></ion-icon>
-                <p>{{data.startdate}} s/d {{data.enddate}}</p>
+                <p>{{data.start_date}} s/d {{data.end_date}}</p>
               </div>
               <div class="time">
                 <ion-icon class="icon" name="timer-outline"></ion-icon>
@@ -101,35 +101,18 @@
             <div class="technologies">
               <h2 class="info-title">Technologies</h2>
               <div class="tech-grid">
-                {{#if data.angular}}
+                {{#each data.tech}}
                   <div class="tech-stack">
-                    <i class="fa-brands fa-angular fs-2"></i>
-                    <p>Angular</p>
+                    <i class="fa-brands fa-{{this}} fs-2"></i>
+                    <p class="text-capitalize">{{this}}</p>
                   </div>
-                {{/if}}
-                {{#if data.laravel}}
-                  <div class="tech-stack">
-                    <i class="fa-brands fa-laravel fs-2"></i>
-                    <p>Laravel</p>
-                  </div>
-                {{/if}}
-                {{#if data.react}}
-                  <div class="tech-stack">
-                    <i class="fa-brands fa-react fs-2"></i>
-                    <p>React JS</p>
-                  </div>
-                {{/if}}
-                {{#if data.vue}}
-                  <div class="tech-stack">
-                    <i class="fa-brands fa-vuejs fs-2"></i>
-                    <p>Vue JS</p>
-                  </div>
-                {{/if}}
+                {{/each}}
               </div>
             </div>
           </div>
         </div>
       <div class="project-desc">
+        <p>{{data.description}}</p>
         <p>
           &emsp; &emsp;Lorem, ipsum dolor sit amet consectetur adipisicing elit.
           Fugiat reprehenderit omnis obcaecati sapiente magni eos eius adipisci,
