@@ -102,6 +102,7 @@ async function handlePostProject(req, res) {
 async function handleDeleteProject(req, res) {
   try {
     const { id } = req.params;
+    // Perintah query Delete
     const query = `DELETE FROM projects WHERE id = ${id}`;
     await SequelizePool.query(query, { type: QueryTypes.DELETE });
     res.redirect("/project#my-project");
