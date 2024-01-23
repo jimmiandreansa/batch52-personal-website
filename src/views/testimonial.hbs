@@ -19,18 +19,21 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <title>{{title}} - Jimmi Andreansa</title>
+    {{!-- Icon Web --}}
+    <link rel="icon" type="icon" href="../assets/images/icon.JPG">
+    {{!-- Title Web --}}
+    <title>{{title}} - Personal Website</title>
   </head>
 
   <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
-    <!-- Ini Navbar -->
+    {{!-- Navbar Start --}}
     <nav
-      class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0"
+      class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0 z-3"
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img
-            class=""
+            class="ms-2"
             src="./assets/images/dumbways-logo.png"
             alt="DumbWays Logo"
             style="height: 40px"
@@ -47,27 +50,54 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-3">
-              <a class="nav-link fs-5" aria-current="page" href="/">Home</a>
-            </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link fs-5" href="/project">Add Project</a>
-            </li>
-            <li class="nav-item mx-3">
+        <div
+          class="collapse navbar-collapse ms-2 align-items-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav me-auto mb-lg-0 align-items-center">
+            <li class="nav-item mx-2">
               <a
-                class="nav-link active fs-5"
-                href="/testimonials"
-              >Testimonials</a>
+                class="nav-link fs-5"
+                aria-current="page"
+                href="/"
+              >Home</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link fs-5" href="/project">Project</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link fs-5 active" href="/testimonials">Testimonial</a>
             </li>
           </ul>
-          <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">
-            Contact Me
-          </a>
+          {{#if dataUser.isLogin}}
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5 fw-medium text-primary">Hello, {{dataUser.user}}</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/logout">Logout</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+              </li>
+            </ul>
+          {{else}}
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/login">Login</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/register">Register</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+              </li>
+            </ul>
+          {{/if}}
         </div>
       </div>
     </nav>
+    {{!-- Navbar End --}}
 
     <main>
       <div class="container">

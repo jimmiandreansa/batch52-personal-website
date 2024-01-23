@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -17,18 +16,21 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
-    <title>{{title}} - Jimmi Andreansa</title>
+    {{!-- Icon Web --}}
+    <link rel="icon" type="icon" href="../assets/images/icon.JPG">
+    {{!-- Title Web --}}
+    <title>{{title}} - Personal Website</title>
   </head>
 
   <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
-    <!-- Ini Navbar -->
+    {{!-- Navbar Start --}}
     <nav
       class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0 z-3"
     >
       <div class="container-fluid">
         <a class="navbar-brand" href="/">
           <img
-            class=""
+            class="ms-2"
             src="./assets/images/dumbways-logo.png"
             alt="DumbWays Logo"
             style="height: 40px"
@@ -45,26 +47,54 @@
         >
           <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse ms-3" id="navbarSupportedContent">
-          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li class="nav-item mx-3">
-              <a class="nav-link active fs-5" aria-current="page" href="/"
-                >Home</a
-              >
+        <div
+          class="collapse navbar-collapse ms-2 align-items-center"
+          id="navbarSupportedContent"
+        >
+          <ul class="navbar-nav me-auto mb-lg-0 align-items-center">
+            <li class="nav-item mx-2">
+              <a
+                class="nav-link active fs-5"
+                aria-current="page"
+                href="/"
+              >Home</a>
             </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link fs-5" href="/project">Add Project</a>
+            <li class="nav-item mx-2">
+              <a class="nav-link fs-5" href="/project">Project</a>
             </li>
-            <li class="nav-item mx-3">
-              <a class="nav-link fs-5" href="/testimonials">Testimonials</a>
+            <li class="nav-item mx-2">
+              <a class="nav-link fs-5" href="/testimonials">Testimonial</a>
             </li>
           </ul>
-          <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">
-            Contact Me
-          </a>
+          {{#if dataUser.isLogin}}
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5 fw-medium text-primary">Hello, {{dataUser.user}}</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/logout">Logout</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+              </li>
+            </ul>
+          {{else}}
+            <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/login">Login</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/register">Register</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+              </li>
+            </ul>
+          {{/if}}
         </div>
       </div>
     </nav>
+    {{!-- Navbar End --}}
 
     <main class="px-3 pb-3" style="margin-top: 20px">
       <div class="container card shadow p-5 d-lg-flex flex-lg-row rounded-4">
@@ -84,16 +114,19 @@
             in the dynamic field of programming.
           </p>
           <div class="mt-5">
-            <a class="btn btn-dark rounded-pill px-4 me-4" href="/contact"
-              >Contact</a
-            >
+            <a
+              class="btn btn-dark rounded-pill px-4 me-4"
+              href="/contact"
+            >Contact</a>
             <a
               class="text-decoration-none text-black"
               href="https://drive.google.com/file/d/1ZQyzVvXE2s5JT4w0PmIbKlx1YWby7NcZ/view?usp=sharing"
               target="_blank"
-              >Download CV
-              <ion-icon class="download-icon" name="download-outline"></ion-icon
-            ></a>
+            >Download CV
+              <ion-icon
+                class="download-icon"
+                name="download-outline"
+              ></ion-icon></a>
           </div>
           <div class="mt-5 text-center text-lg-start">
             <a
@@ -141,8 +174,7 @@
                 color: black;
                 --bs-icon-link-transform: translate3d(0, -0.3rem, 0);
               "
-              ><i class="bi bi-twitter-x"></i
-            ></a>
+            ><i class="bi bi-twitter-x"></i></a>
             <a
               href="https://www.facebook.com/jimmi.andreansa.779/"
               target="_blank"
@@ -152,13 +184,14 @@
                 color: black;
                 --bs-icon-link-transform: translate3d(0, -0.3rem, 0);
               "
-              ><i class="bi bi-facebook"></i
-            ></a>
+            ><i class="bi bi-facebook"></i></a>
           </div>
         </div>
-        <div class="col-lg-4 shadow rounded-3 overflow-hidden mt-5 mt-lg-0 mx-auto">
+        <div
+          class="col-lg-4 shadow rounded-3 overflow-hidden mt-5 mt-lg-0 mx-auto"
+        >
           <img
-            src="./assets/images/jimmi-andreansa.jpg"
+            src="../assets/images/jimmi-andreansa.jpg"
             alt="My Photo"
             style="
               width: 100%;
