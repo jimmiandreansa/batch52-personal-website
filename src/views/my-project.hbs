@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,14 +24,18 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-    {{!-- Icon Web --}}
-    <link rel="icon" type="icon" href="../assets/images/icon.JPG">
-    {{!-- Title Web --}}
+    {{! Icon Web }}
+    <link rel="icon" type="icon" href="../assets/images/icon.JPG" />
+    {{! Title Web }}
     <title>{{title}} - Personal Website</title>
+    <style>
+      .img-preview { height: 120px; border-radius: 8px; } .image-project {
+      height: 230px; object-fit: cover; }
+    </style>
   </head>
 
   <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
-    {{!-- Navbar Start --}}
+    {{! Navbar Start }}
     <nav
       class="navbar navbar-expand-lg bg-body-tertiary px-md-4 px-lg-5 position-fixed start-0 top-0 end-0 z-3"
     >
@@ -62,29 +65,31 @@
         >
           <ul class="navbar-nav me-auto mb-lg-0 align-items-center">
             <li class="nav-item mx-2">
-              <a
-                class="nav-link fs-5"
-                aria-current="page"
-                href="/"
-              >Home</a>
+              <a class="nav-link fs-5" aria-current="page" href="/">Home</a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link fs-5 active" href="/project">Project</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link fs-5" href="/testimonials">Testimonial</a>
-            </li>
+            {{#if dataUser.isLogin}}
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5 active" href="/project">Add Project</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/testimonials">Testimonial</a>
+              </li>
+            {{/if}}
           </ul>
           {{#if dataUser.isLogin}}
             <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
               <li class="nav-item mx-2">
-                <a class="nav-link fs-5 fw-medium text-primary">Hello, {{dataUser.user}}</a>
+                <a class="nav-link fs-5 fw-medium text-primary">Hello,
+                  {{dataUser.user}} 🖐</a>
               </li>
               <li class="nav-item mx-2">
                 <a class="nav-link fs-5" href="/logout">Logout</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+                <a
+                  class="btn btn-dark fs-5 py-1 px-3"
+                  href="/contact"
+                >Contact</a>
               </li>
             </ul>
           {{else}}
@@ -96,191 +101,241 @@
                 <a class="nav-link fs-5" href="/register">Register</a>
               </li>
               <li class="nav-item mx-2">
-                <a class="btn btn-dark fs-5 py-1 px-3" href="/contact">Contact</a>
+                <a
+                  class="btn btn-dark fs-5 py-1 px-3"
+                  href="/contact"
+                >Contact</a>
               </li>
             </ul>
           {{/if}}
         </div>
       </div>
     </nav>
-    {{!-- Navbar End --}}
+    {{! Navbar End }}
 
     <main>
       <div class="container">
         {{#if dataUser.isLogin}}
-        <h2 class="fw-bold text-center mt-5 text-uppercase">Add My Project</h2>
-        <div class="row justify-content-center my-5">
-          <div class="col-lg-6">
-            <form action="/project" method="POST">
+          <h2 class="fw-bold text-center mt-5 text-uppercase">Add My Project</h2>
+          <div class="row justify-content-center my-5">
+            <div class="col-lg-6">
+              <form
+                action="/project"
+                method="POST"
+                enctype="multipart/form-data"
+              >
 
-              {{!-- Input Name --}}
-              <div class="mb-3">
-                <label for="name" class="form-label fw-bold">Name</label>
-                <input type="name" class="form-control" name="name" required/>
-              </div>
-
-              {{!-- Input Date --}}
-              <div class="row mb-3">
-                <div class="col">
-                  <label for="start-date" class="form-label fw-bold"
-                    >Start Date</label
-                  >
+                {{! Input Name }}
+                <div class="mb-3">
+                  <label for="name" class="form-label fw-bold">Name</label>
                   <input
-                    type="date"
+                    type="name"
                     class="form-control"
-                    name="startdate"
+                    name="name"
                     required
                   />
                 </div>
-                <div class="col">
-                  <label for="end-date" class="form-label fw-bold"
-                    >End Date</label
-                  >
-                  <input
-                    type="date"
+
+                {{! Input Date }}
+                <div class="row mb-3">
+                  <div class="col">
+                    <label for="start-date" class="form-label fw-bold">Start
+                      Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      name="startdate"
+                      required
+                    />
+                  </div>
+                  <div class="col">
+                    <label for="end-date" class="form-label fw-bold">End Date</label>
+                    <input
+                      type="date"
+                      class="form-control"
+                      name="enddate"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="mb-3">
+                  <label
+                    for="description"
+                    class="form-label fw-bold"
+                  >Description</label>
+                  <textarea
+                    name="description"
+                    required
                     class="form-control"
-                    name="enddate"
+                    style="height: 140px; resize: none"
+                  ></textarea>
+                </div>
+
+                {{! Input Technologies (checkbox) }}
+                <div class="mb-3">
+                  <label
+                    for="technologies"
+                    class="form-label fw-bold"
+                  >Technologies</label>
+                  <div class="row ps-3">
+                    <div class="form-check col">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="angular"
+                        name="tech"
+                        id="angular"
+                      />
+                      <label class="form-check-label" for="angular">
+                        Angular
+                      </label>
+                    </div>
+                    <div class="form-check col">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="laravel"
+                        name="tech"
+                        id="laravel"
+                      />
+                      <label class="form-check-label" for="laravel">
+                        Laravel
+                      </label>
+                    </div>
+                  </div>
+                  <div class="row ps-3">
+                    <div class="form-check col">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="js"
+                        name="tech"
+                        id="javascript"
+                      />
+                      <label class="form-check-label" for="javascript">
+                        JavaScript
+                      </label>
+                    </div>
+                    <div class="form-check col">
+                      <input
+                        class="form-check-input"
+                        type="checkbox"
+                        value="node"
+                        name="tech"
+                        id="node-js"
+                      />
+                      <label class="form-check-label" for="node-js">
+                        Node JS
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                {{! Input Image }}
+                <div class="mb-4">
+                  <label for="image" class="form-label fw-bold">Upload Image</label>
+                  <input
+                    accept="image/*"
+                    type="file"
+                    class="form-control"
+                    name="image"
+                    id="image"
                     required
                   />
+                  <img
+                    class="img-preview mt-2 ms-1"
+                    id="imgPreview"
+                    src="https://www.freeiconspng.com/thumbs/no-image-icon/no-image-icon-15.png"
+                    alt="your image"
+                  />
                 </div>
-              </div>
-              <div class="mb-3">
-                <label for="description" class="form-label fw-bold"
-                  >Description</label
-                >
-                <textarea
-                  name="description"
-                  required
-                  class="form-control"
-                  style="height: 140px; resize: none"
-                ></textarea>
-              </div>
 
-              {{!-- Input Technologies (checkbox) --}}
-              <div class="mb-3">
-                <label for="technologies" class="form-label fw-bold"
-                  >Technologies</label
-                >
-                <div class="row ps-3">
-                  <div class="form-check col">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="angular"
-                      name="tech"
-                      id="angular"
-                    />
-                    <label class="form-check-label" for="angular">
-                      Angular
-                    </label>
-                  </div>
-                  <div class="form-check col">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="laravel"
-                      name="tech"
-                      id="laravel"
-                    />
-                    <label class="form-check-label" for="laravel">
-                      Laravel
-                    </label>
-                  </div>
+                {{! Button Submit }}
+                <div class="text-end">
+                  <button class="btn btn-dark" type="submit">Submit</button>
                 </div>
-                <div class="row ps-3">
-                  <div class="form-check col">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="js"
-                      name="tech"
-                      id="javascript"
-                    />
-                    <label class="form-check-label" for="javascript">
-                      JavaScript
-                    </label>
-                  </div>
-                  <div class="form-check col">
-                    <input
-                      class="form-check-input"
-                      type="checkbox"
-                      value="node"
-                      name="tech"
-                      id="node-js"
-                    />
-                    <label class="form-check-label" for="node-js">
-                      Node JS
-                    </label>
-                  </div>
-                </div>
-              </div>
-
-              {{!-- Input Image --}}
-              <div class="mb-4">
-                <label for="image" class="form-label fw-bold"
-                  >Upload Image</label
-                >
-                <input type="file" class="form-control" name="image" />
-              </div>
-
-              {{!-- Button Submit --}}
-              <div class="text-end">
-                <button class="btn btn-dark" type="submit">Submit</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
-        </div>
+        {{else}}
+          <h2 class="fw-bold text-center mt-5 text-uppercase">You Must Login
+            First If You Want Add a Project</h2>
         {{/if}}
       </div>
 
-      {{!-- Ini Bagian My Project --}}
+      {{! Ini Bagian My Project }}
       <div class="bg-light py-4 px-5" id="my-project">
-        <h2 class="fw-bold text-center my-5 text-uppercase">The Projects</h2>
-        <div class="container" id="input-project">
-          <div class="row gy-4">
-            {{#each data}}
-            <div class="col-lg-4 col-md-6">
-              <div class="card p-3 rounded-4" style="width: 100%">
-                <a href="/project-detail/{{this.id}}">
-                  <img
-                    class="rounded-2 mb-3"
-                    src="/assets/images/my-project/project-1.jpg"
-                    alt="My-Project"
-                    style="width: 100%"
-                  />
-                </a>
-                <a
-                  href="/project-detail/{{this.id}}"
-                  class="text-decoration-none text-dark"
-                >
-                  <h5 class="card-title fs-5">{{this.name}} ~ {{this.year}}</h5>
-                </a>
-                <p class="text-secondary">Durasi: {{this.duration}}</p>
-                <div class="d-flex gap-3 mb-4 mt-2">
-                  {{#each this.tech}}
-                    <i class="fa-brands fa-{{this}} fs-2"></i>
-                  {{/each}}
+        {{#if dataLength}}
+        <h2 class="fw-bold text-center my-5 text-uppercase">My Project</h2>
+        {{else}}
+        <h2 class="fw-bold text-center my-5 text-uppercase">You don't have any projects yet</h2>
+        {{/if}}
+        {{#if dataUser.isLogin}}
+          <div class="container" id="input-project">
+            <div class="row gy-4">
+              {{#each data}}
+                <div class="col-lg-4 col-md-6">
+                  <div class="card p-3 rounded-4" style="width: 100%">
+                    <a href="/project-detail/{{this.id}}">
+                      <img
+                        class="rounded-2 mb-3 image-project"
+                        src="/uploads/{{this.image}}"
+                        alt="My-Project"
+                        style="width: 100%"
+                      />
+                    </a>
+                    <a
+                      href="/project-detail/{{this.id}}"
+                      class="text-decoration-none text-dark"
+                    >
+                      <h5 class="card-title fs-5">{{this.project_name}}
+                        ~
+                        {{this.year}}</h5>
+                    </a>
+                    <p class="text-secondary m-0 fw-light">Durasi:
+                      {{this.duration}}</p>
+                    <p class="text-primary-emphasis">Author:
+                      {{this.username}}</p>
+                    <div class="d-flex gap-3 mb-4 mt-2">
+                      {{#each this.tech}}
+                        <i class="fa-brands fa-{{this}} fs-2"></i>
+                      {{/each}}
+                    </div>
+                    <p class="card-text">
+                      {{this.description}}
+                    </p>
+                    <div class="card-info-btn d-flex gap-2">
+                      <a
+                        href="/edit-project/{{this.id}}"
+                        class="btn btn-dark"
+                        style="width: 100%"
+                      >Edit</a>
+                      <a
+                        href="/delete/{{this.id}}"
+                        class="btn btn-dark"
+                        style="width: 100%"
+                      >
+                        Delete
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <p class="card-text">
-                  {{this.description}}
-                </p>
-                {{#if this.isLogin}}
-                <div class="card-info-btn d-flex gap-2">
-                  <a href="/edit-project/{{this.id}}" class="btn btn-dark" style="width: 100%">Edit</a>
-                  <a href="/delete/{{this.id}}" class="btn btn-dark" style="width: 100%">
-                    Delete
-                  </a>
-                </div>
-                {{/if}}
-              </div>
+              {{/each}}
             </div>
-            {{/each}}
           </div>
-        </div>
+        {{/if}}
       </div>
     </main>
 
     <!-- Ionic Icons -->
+    <script>
+      image.onchange = evt => {
+        const [file] = image.files
+        if (file) {
+          imgPreview.src = URL.createObjectURL(file)
+        } 
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

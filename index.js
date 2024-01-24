@@ -3,6 +3,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
+const upload = require("./src/middlewares/uploadFiles")
 const dbPool = require("./src/connection/index");
 
 const app = express();
@@ -18,6 +19,7 @@ app.set("view engine", "hbs");
 app.set("views", "src/views");
 
 app.use("/assets", express.static("src/assets"));
+app.use("/uploads", express.static("src/uploads"));
 // Body Parser
 app.use(express.urlencoded({ extended: false }));
 
@@ -37,40 +39,53 @@ app.use(
 );
 app.use(flash());
 
+// Ini adalah routingan untuk setiap halaman
 app.get("/", home);
 app.get("/contact", contact);
 app.get("/project", myProject);
 app.get("/project-detail/:id", projectDetail);
 app.get("/testimonials", testimonial);
-app.post("/project", handlePostProject);
+app.post("/project", upload.single("image"), handlePostProject);
 app.get("/delete/:id", handleDeleteProject);
 app.get("/edit-project/:id", editProject);
-app.post("/edit-project", handleEditProject);
+app.post("/edit-project/", upload.single("image"), handleEditProject);
 app.get("/login", loginView);
 app.get("/register", registerView);
 app.post("/login", handleLogin);
 app.post("/register", handleRegister);
-app.get("/logout", handleLogout)
+app.get("/logout", handleLogout);
 
 // Fungsi untuk menampilkan halaman Home
-function home(req, res) {
+async function home(req, res) {
+  // Ini fungsi untuk menampilkan hanya nama depan user
   let name = req.session.user;
   let userName = function () {
-    return name.replace(/ .*/, "");
+    if (undefined) {
+      return name.replace(/ .*/, "");
+    } else {
+      return name.replace(/ .*/, "");
+    }
   };
+  // Query data
+  const query = `SELECT users.id, projects.id, projects.project_name, projects.year, projects.start_date, projects.end_date, projects.duration, projects.description, projects.tech, projects.image, projects.author, users.username FROM projects INNER JOIN users ON projects.author = users.id ORDER BY projects.id DESC`;
+  const project = await SequelizePool.query(query, { type: QueryTypes.SELECT });
   const title = "Jimmi Andreansa";
   const dataUser = {
     isLogin: req.session.isLogin,
     user: userName,
   };
-  res.render("index", { dataUser, title });
+  res.render("index", { data: project, dataUser, title });
 }
 
 // Fungsi untuk merender halaman Contact
 function contact(req, res) {
   let name = req.session.user;
   let userName = function () {
-    return name.replace(/ .*/, "");
+    if (undefined) {
+      return name.replace(/ .*/, "");
+    } else {
+      return name.replace(/ .*/, "");
+    }
   };
   const dataUser = {
     isLogin: req.session.isLogin,
@@ -82,12 +97,18 @@ function contact(req, res) {
 
 // Fungsi untuk merender halaman My-Project
 async function myProject(req, res) {
+  const id = req.session.idUser
   let name = req.session.user;
   let userName = function () {
-    return name.replace(/ .*/, "");
+    if (undefined) {
+      return name.replace(/ .*/, "");
+    } else {
+      return name.replace(/ .*/, "");
+    }
   };
   const title = "Add a Project";
-  const query = "SELECT * FROM projects";
+  // Query
+  const query = `SELECT users.id, projects.id, projects.project_name, projects.year, projects.start_date, projects.end_date, projects.duration, projects.description, projects.tech, projects.image, projects.author, users.username FROM projects INNER JOIN users ON projects.author = users.id WHERE users.id = ${id} ORDER BY projects.id DESC`;
   const project = await SequelizePool.query(query, { type: QueryTypes.SELECT });
   const data = project.map((res) => ({
     ...res,
@@ -98,14 +119,19 @@ async function myProject(req, res) {
     isLogin: req.session.isLogin,
     user: userName,
   };
-  res.render("my-project", { data, title, dataUser });
+  const dataLength = data.length
+  res.render("my-project", { data, title, dataUser, dataLength });
 }
 
 // Fungsi untuk merender halaman Testimonial
 function testimonial(req, res) {
   let name = req.session.user;
   let userName = function () {
-    return name.replace(/ .*/, "");
+    if (undefined) {
+      return name.replace(/ .*/, "");
+    } else {
+      return name.replace(/ .*/, "");
+    }
   };
   const dataUser = {
     isLogin: req.session.isLogin,
@@ -119,7 +145,11 @@ function testimonial(req, res) {
 async function projectDetail(req, res) {
   let name = req.session.user;
   let userName = function () {
-    return name.replace(/ .*/, "");
+    if (undefined) {
+      return name.replace(/ .*/, "");
+    } else {
+      return name.replace(/ .*/, "");
+    }
   };
   const dataUser = {
     isLogin: req.session.isLogin,
@@ -127,7 +157,7 @@ async function projectDetail(req, res) {
   };
   const { id } = req.params;
   // Perintah Query
-  const query = `SELECT * FROM projects WHERE id = ${id}`;
+  const query = `SELECT users.id, projects.id, projects.project_name, projects.year, projects.start_date, projects.end_date, projects.duration, projects.description, projects.tech, projects.image, projects.author, users.username FROM projects INNER JOIN users ON projects.author = users.id WHERE projects.id = ${id}`;
   const dataDetail = await SequelizePool.query(query, {
     type: QueryTypes.SELECT,
   });
@@ -159,12 +189,14 @@ async function handlePostProject(req, res) {
         return years + " Tahun";
       }
     }
+    const author = req.session.idUser
+    let image = req.file.filename
     const techs = Array.isArray(tech) ? tech : [tech];
     // Masukkan data-data kedalam database
     const query = `INSERT INTO projects 
-    (name, year, start_date, end_date, duration, description, tech) 
+    (project_name, year, start_date, end_date, duration, description, tech, image, author, "createdAt", "updatedAt") 
     VALUES 
-    ('${name}', '${year}', '${startdate}', '${enddate}', '${duration()}', '${description}', '{${techs}}')`;
+    ('${name}', '${year}', '${startdate}', '${enddate}', '${duration()}', '${description}', '{${techs}}', '${image}', ${author}, NOW(), NOW())`;
     await SequelizePool.query(query, { type: QueryTypes.INSERT });
     // Melempar user ke halaman My-Project
     res.redirect("/project#my-project");
@@ -192,7 +224,11 @@ async function editProject(req, res) {
   try {
     let name = req.session.user;
     let userName = function () {
-      return name.replace(/ .*/, "");
+      if (undefined) {
+        return name.replace(/ .*/, "");
+      } else {
+        return name.replace(/ .*/, "");
+      }
     };
     const dataUser = {
       isLogin: req.session.isLogin,
@@ -215,7 +251,7 @@ async function editProject(req, res) {
 async function handleEditProject(req, res) {
   try {
     // Mengambil nilai dari inputan-inputan yang ada dihalaman My-Project
-    const { id, name, startdate, enddate, description, tech } = req.body;
+    const { id, name, startdate, enddate, description, tech, image } = req.body;
     // Membuat inputan Tech menjadi tipe data Array
     const techArray = Array.isArray(tech) ? tech : [tech];
     // Perhitungan untuk menentukan durasi project
@@ -236,16 +272,18 @@ async function handleEditProject(req, res) {
         return years + " Tahun";
       }
     }
+    // Melakukan query lagi untuk mengambil nilai image yang telah disimpan didatabase
+    const getImage = await SequelizePool.query(`SELECT * FROM projects WHERE id = ${id}`, {type: QueryTypes.SELECT,});
+    // Buat pengkondisian apabila user tidak memasukan image saat edit, maka yang disimpan image yang lama
+    function img() {
+      if(req.file) {
+        return req.file.filename
+      } else {
+        return getImage[0].image
+      }
+    }
     // Masukan data-data yang akan di-update kedalam database
-    const query = `UPDATE projects SET 
-      name='${name}', 
-      year='${year}', 
-      start_date='${startdate}', 
-      end_date='${enddate}', 
-      duration='${duration()}', 
-      description='${description}', 
-      tech='{${techArray}}' 
-      WHERE id = ${id}`;
+    const query = `UPDATE projects SET project_name='${name}', year='${year}', start_date='${startdate}', end_date='${enddate}', duration='${duration()}', description='${description}', tech='{${techArray}}', image='${img()}' WHERE id = ${id}`;
     await SequelizePool.query(query, { type: QueryTypes.UPDATE });
     res.redirect("/project#my-project");
   } catch (error) {
@@ -254,23 +292,32 @@ async function handleEditProject(req, res) {
   }
 }
 
+// Fungsi untuk merender halaman Login
 function loginView(req, res) {
   const title = "Login";
-  res.render("login", { title });
+  const dataUser = {
+    isLogin: req.session.isLogin,
+  };
+  res.render("login", { dataUser, title });
 }
 
+// Fungsi untuk merender halaman Register
 function registerView(req, res) {
   const data = "Register";
-  res.render("register", { title: data });
+  const dataUser = {
+    isLogin: req.session.isLogin,
+  };
+  res.render("register", { dataUser, title: data });
 }
 
+// Fungsi untuk meng-handle Register User
 async function handleRegister(req, res) {
   try {
     const { name, email, password } = req.body;
     const salt = 10;
     bcrypt.hash(password, salt, async (err, hashPassword) => {
       const query = `
-      INSERT INTO users (name, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())
+      INSERT INTO users (username, email, password, "createdAt", "updatedAt") VALUES ('${name}', '${email}', '${hashPassword}', NOW(), NOW())
       `;
       await SequelizePool.query(query, { type: QueryTypes.INSERT });
     });
@@ -281,9 +328,11 @@ async function handleRegister(req, res) {
   }
 }
 
+// Fungsi untuk meng-handle Login User
 async function handleLogin(req, res) {
   try {
     const { email, password } = req.body;
+    // Melakukan pengecekan email apakah email yang diinput ada di database atau tidak
     const queryEmail = `SELECT * FROM users WHERE email = '${email}'`;
     const checkEmail = await SequelizePool.query(queryEmail, {
       type: QueryTypes.SELECT,
@@ -298,8 +347,10 @@ async function handleLogin(req, res) {
         req.flash("wrongPassword", "Password does not match");
         return res.redirect("/login");
       } else {
+        // Membuat session
         req.session.isLogin = true;
-        req.session.user = checkEmail[0].name;
+        req.session.user = checkEmail[0].username;
+        req.session.idUser = checkEmail[0].id;
         return res.redirect("/");
       }
     });
@@ -308,9 +359,10 @@ async function handleLogin(req, res) {
   }
 }
 
+// Fungsi untuk handle Logout
 function handleLogout(req, res) {
   req.session.destroy();
-  res.redirect("/login")
+  res.redirect("/login");
 }
 
 app.listen(port, () => {

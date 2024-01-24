@@ -29,6 +29,12 @@
     <link rel="icon" type="icon" href="../assets/images/icon.JPG">
     {{!-- Title Web --}}
     <title>{{title}} - Personal Website</title>
+    <style>
+      .img-preview {
+        height: 120px;
+        border-radius: 8px;
+      }
+    </style>
   </head>
 
   <body style="padding-top: 64px; background-color: rgb(231, 231, 231)">
@@ -68,17 +74,19 @@
                 href="/"
               >Home</a>
             </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link fs-5 active" href="/project">Project</a>
-            </li>
-            <li class="nav-item mx-2">
-              <a class="nav-link fs-5" href="/testimonials">Testimonial</a>
-            </li>
+            {{#if dataUser.isLogin}}
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5 active" href="/project">Add Project</a>
+              </li>
+              <li class="nav-item mx-2">
+                <a class="nav-link fs-5" href="/testimonials">Testimonial</a>
+              </li>
+            {{/if}}
           </ul>
           {{#if dataUser.isLogin}}
             <ul class="navbar-nav mb-2 mb-lg-0 align-items-center">
               <li class="nav-item mx-2">
-                <a class="nav-link fs-5 fw-medium text-primary">Hello, {{dataUser.user}}</a>
+                <a class="nav-link fs-5 fw-medium text-primary">Hello, {{dataUser.user}} 🖐</a>
               </li>
               <li class="nav-item mx-2">
                 <a class="nav-link fs-5" href="/logout">Logout</a>
@@ -110,12 +118,12 @@
         <h2 class="fw-bold text-center mt-5 text-uppercase">Edit My Project</h2>
         <div class="row justify-content-center my-5">
           <div class="col-lg-6">
-            <form method="POST" action="/edit-project" >
+            <form method="POST" action="/edit-project" enctype="multipart/form-data" >
 
               {{!-- Inputan untuk Name --}}
               <div class="mb-3">
                 <label for="name" class="form-label fw-bold">Name</label>
-                <input type="name" class="form-control" name="name" value="{{data.name}}" />
+                <input type="name" class="form-control" name="name" value="{{data.project_name}}" />
               </div>
 
               {{!-- Inputan untuk Start Date dan End Date --}}
@@ -217,10 +225,9 @@
 
               {{!-- Inputan untuk Image --}}
               <div class="mb-4">
-                <label for="image" class="form-label fw-bold"
-                  >Upload Image</label
-                >
-                <input type="file" class="form-control" name="image" />
+                <label for="image" class="form-label fw-bold">Edit Image</label>
+                <input accept="image/*" type="file" class="form-control" name="image" id="image" />
+                <img class="img-preview mt-2 ms-1" id="imgPreview" src="/uploads/{{data.image}}" alt="your image"/>
               </div>
 
               {{!-- Ini inputan untuk menangkap ID --}}
@@ -245,6 +252,13 @@
       laravelBox.checked = selectedTechs.includes("laravel");
       javascriptBox.checked = selectedTechs.includes("js");
       nodeBox.checked = selectedTechs.includes("node");
+
+      image.onchange = evt => {
+        const [file] = image.files
+        if (file) {
+          imgPreview.src = URL.createObjectURL(file)
+        }
+      }
     </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
